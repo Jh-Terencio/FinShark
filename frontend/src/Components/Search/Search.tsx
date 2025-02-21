@@ -1,4 +1,4 @@
-import React, { JSX, useState } from 'react'
+import React, { ChangeEvent, JSX, useState } from 'react'
 
 type Props = {}
 
@@ -8,16 +8,21 @@ const Search: React.FC<Props> = (props: Props): JSX.Element => {
   const [search, setSearch] = useState<string>("");
   
   // Event handler
-  const onClick = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // setSearch will recive the value of e. In this exemple setSearch will recive what is in the input
     setSearch(e.target.value)
     console.log(e)
   }
 
+  const onCLick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log(e)
+  }
+
   return (
     <div>
-      {/* // Every time that the input is changed the function onClick() will be activated*/}
-      <input value={search} onChange={(e) => onClick(e)}/>
+      {/* // Every time that the input is changed the function handleChange() will be activated*/}
+      <input value={search} onChange={(e) => handleChange(e)}/>
+      <button onClick={(e) => onCLick(e)}></button>
     </div>
   )
 }
